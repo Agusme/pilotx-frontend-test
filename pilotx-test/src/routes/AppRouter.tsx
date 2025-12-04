@@ -9,7 +9,7 @@ export default function AppRouter() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<PostPage />} />
-          <Route path="/post/:id" element={<PostDetailPage />} />
+          <Route path="/posts/:id" element={<PostDetailPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
