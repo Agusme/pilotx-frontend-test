@@ -30,5 +30,5 @@ export function usePostDetail(id: string) {
     fetchData();
   }, [id]);
 
-  return { post, comments, loading, error };
+  return { post, comments, setComments, loading, error };
 }

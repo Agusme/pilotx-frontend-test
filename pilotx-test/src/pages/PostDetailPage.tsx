@@ -3,11 +3,14 @@ import { Box, Typography, CircularProgress } from "@mui/material";
 import PostCard from "../components/Posts/PostCard";
 import { usePostDetail } from "../hooks/usePostDetail";
 import CommentCard from "../components/Comments/CommentCard";
+import CreateCommentForm from "../components/Comments/CreateCommentForm";
+import { createComment } from "../api/post";
+import type { CreateCommentPayload } from "../types";
 
 export default function PostDetailPage() {
   const { id } = useParams();
 
-  const { post, comments, loading, error } = usePostDetail(id!);
+  const { post, comments, setComments, loading, error } = usePostDetail(id!);
 
   if (loading) {
     return (
@@ -19,6 +22,12 @@ export default function PostDetailPage() {
 
   if (error) return <p>{error}</p>;
   if (!post) return <p>No se encontró el post.</p>;
+
+  const handleCreateComment = async (data: CreateCommentPayload) => {
+    const newComment = await createComment(post.id, data);
+
+    setComments((prev) => [...prev, newComment]);
+  };
 
   return (
     <Box sx={{ p: 3, maxWidth: 700, mx: "auto" }}>
@@ -43,8 +52,7 @@ export default function PostDetailPage() {
       {comments.map((comment) => (
         <CommentCard key={comment.id} comment={comment} />
       ))}
-
-      {/*  crear comentario */}
+      <CreateCommentForm onSubmit={handleCreateComment} />
     </Box>
   );
 }
