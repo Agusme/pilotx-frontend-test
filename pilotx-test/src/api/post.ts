@@ -16,7 +16,14 @@ export const getComments = async (id: string | number) => {
   return response.data;
 };
 
-export const createComment = async ( data: CreateCommentPayload) => {
-  const response = await axiosClient.post("/comments", data);
+export const createComment = async (
+  postId: number,
+  data: CreateCommentPayload
+) => {
+  const response = await axiosClient.post("/comments", {
+    ...data,
+    postId,
+  });
+
   return response.data;
 };
