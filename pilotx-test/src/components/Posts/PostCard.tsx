@@ -1,5 +1,6 @@
 import { Card, CardContent, Typography, Box, Avatar } from "@mui/material";
 import type { Post } from "../../types";
+import { Link } from "react-router-dom";
 
 interface PostCardProps {
   post: Post;
@@ -13,6 +14,10 @@ export default function PostCard({
   onClick,
 }: PostCardProps) {
   return (
+      <Link
+      to={`/posts/${post.id}`}
+      style={{ textDecoration: "none", color: "inherit" }}
+    >
     <Card
       onClick={onClick}
       elevation={0}
@@ -31,7 +36,7 @@ export default function PostCard({
           sx={{
             bgcolor: "black",
             fontWeight: "bold",
-            fontFamily: "Montserrat",
+            fontFamily: "Roboto, sans-serif", 
           }}
         >
           {userInitial}
@@ -46,6 +51,6 @@ export default function PostCard({
           </Typography>
         </Box>
       </CardContent>
-    </Card>
+    </Card></Link>
   );
 }
