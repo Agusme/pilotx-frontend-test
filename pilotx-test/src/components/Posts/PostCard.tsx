@@ -1,17 +1,19 @@
 import { Card, CardContent, Typography, Box, Avatar } from "@mui/material";
 import type { Post } from "../../types";
 import { Link } from "react-router-dom";
+import { BookmarkBorder, ChatBubbleOutline, FavoriteBorder, Repeat } from "@mui/icons-material";
 
 interface PostCardProps {
   post: Post;
   userInitial?: string;
   onClick?: () => void;
+   commentCount?: number; 
 }
 
 export default function PostCard({
   post,
   userInitial = "U",
-  onClick,
+  onClick,commentCount
 }: PostCardProps) {
   return (
       <Link
@@ -50,7 +52,33 @@ export default function PostCard({
             {post.body}
           </Typography>
         </Box>
-      </CardContent>
+      </CardContent> <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            px: 2,
+            pb: 1,
+            pt: 0,
+            color: "text.secondary",
+          }}
+        >
+          <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
+            <ChatBubbleOutline fontSize="small" />
+            <Typography variant="body2">{commentCount ?? 0}</Typography>
+          </Box>
+          <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
+            <Repeat fontSize="small" />
+            <Typography variant="body2">12</Typography>
+          </Box>
+          <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
+            <FavoriteBorder fontSize="small" />
+            <Typography variant="body2">23</Typography>
+          </Box>
+          <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
+            <BookmarkBorder fontSize="small" />
+          </Box>
+        </Box>
+       
     </Card></Link>
   );
 }
