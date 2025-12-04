@@ -1,4 +1,4 @@
-import { Card, CardContent, Typography, Box } from "@mui/material";
+import { Card, CardContent, Typography, Box, Avatar } from "@mui/material";
 import type { Post } from "../../types";
 
 interface PostCardProps {
@@ -8,7 +8,7 @@ interface PostCardProps {
 }
 
 export default function PostCard({
-   post,
+  post,
   userInitial = "U",
   onClick,
 }: PostCardProps) {
@@ -27,24 +27,15 @@ export default function PostCard({
       }}
     >
       <CardContent sx={{ display: "flex", gap: 2 }}>
-        <Box
+        <Avatar
           sx={{
-            width: 45,
-            height: 45,
-            borderRadius: "50%",
-            backgroundColor: "black",
-            color: "#fff",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
+            bgcolor: "black",
             fontWeight: "bold",
-            fontSize: "1rem",
-            flexShrink: 0,
-            fontFamily: "Roboto, sans-serif", 
+            fontFamily: "Montserrat",
           }}
         >
           {userInitial}
-        </Box>
+        </Avatar>
 
         <Box>
           <Typography variant="h6" sx={{ fontSize: "1.1rem", fontWeight: 600 }}>
