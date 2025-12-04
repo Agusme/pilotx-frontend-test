@@ -35,6 +35,8 @@ export default function PostDetailPage() {
         post={post}
         userInitial={post.title[0].toUpperCase()}
         onClick={undefined}
+          commentCount={comments.length}
+
       />
       <Typography
         variant="h5"

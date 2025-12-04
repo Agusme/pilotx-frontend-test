@@ -20,7 +20,7 @@ const PostPage = () => {
     );
   if (error) return <p>{error}</p>;
   return (
-    <Box>
+    <Box sx={{ p: 3, maxWidth: 700, mx: "auto" }}>
       {posts.map((post) => (
         <PostCard
           key={post.id}
