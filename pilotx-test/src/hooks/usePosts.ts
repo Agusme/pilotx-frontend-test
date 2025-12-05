@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { getPosts } from "../api/post";
-import type { Post } from "../types";
+import { getPosts, getComments } from "../api/post";
+import type { Post, Comment } from "../types";
 
 export function usePosts() {
   const [posts, setPosts] = useState<Post[]>([]);
@@ -10,11 +10,24 @@ export function usePosts() {
   const fetchPosts = async () => {
     try {
       setLoading(true);
-      const data = await getPosts();
-      setPosts(data);
+
+      const postsData = await getPosts();
+
+      const postsWithComments = await Promise.all(
+        postsData.map(async (post: Post) => {
+          const comments: Comment[] = await getComments(post.id);
+          return {
+            ...post,
+            comments,
+            commentCount: comments.length,
+          };
+        })
+      );
+
+      setPosts(postsWithComments);
     } catch (err) {
       setError("Error al cargar los posts");
-      console.error(err); 
+      console.error(err);
     } finally {
       setLoading(false);
     }
