@@ -20,7 +20,26 @@ const PostPage = () => {
     );
   if (error) return <p>{error}</p>;
   return (
-    <Box sx={{ p: 3, maxWidth: 700, mx: "auto" }}>
+    <Box sx={{ maxWidth: 700, mx: "auto" }}>
+             <Box
+    sx={{
+      width: "100%",
+      height: 120,
+      borderRadius: 2,
+      overflow: "hidden",
+      mb: 2,
+    }}
+  >
+    <img
+      src="/pilot_x_ai_cover.jpg"   // poné la imagen en /public/
+      alt="PilotX Banner"
+      style={{
+        width: "100%",
+        height: "100%",
+        objectFit: "cover",
+      }}
+    />
+  </Box>
       {posts.map((post) => (
         <PostCard
           key={post.id}
