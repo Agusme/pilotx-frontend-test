@@ -29,51 +29,48 @@ export default function Sidebar({ mobileOpen, onClose }: Props) {
         gap: 3,
       }}
     >
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: 1,
-        }}
-        component={Link}
-        to="/"
-        style={{ textDecoration: "none", color: "inherit" }}
-      >
-        <Box
-          sx={{
-            width: 100,
-            height: 100,
-            borderRadius: 2,
-            overflow: "hidden",
-            boxShadow: 2,
-          }}
-        >
-          <img
-            src={logoPilotX}
-            alt="PilotX logo"
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-            }}
-          />
-        </Box>
+     <Box
+  sx={{
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: 1,
+  }}
+  component={Link}
+  to="/"
+  style={{ textDecoration: "none", color: "inherit" }}
+>
+  <Box
+    sx={{
+      width: 100,
+      height: 100,
+      borderRadius: 2,
+      overflow: "hidden",
+      boxShadow: 2,
+    }}
+  >
+    <img
+      src={logoPilotX}
+      alt="PilotX logo"
+      style={{
+        width: "100%",
+        height: "100%",
+        objectFit: "cover",
+      }}
+    />
+  </Box>
 
-        <Typography
-          variant="h5"
-          sx={{
-            fontWeight: 700,
-            textAlign: "center",
-            color: "#222",
-          }}
-          component={Link}
-          to="/"
-          style={{ textDecoration: "none", color: "inherit" }}
-        >
-          PilotX
-        </Typography>
-      </Box>
+  <Typography
+    variant="h5"
+    sx={{
+      fontWeight: 700,
+      textAlign: "center",
+      color: "#222",
+    }}
+  >
+    PilotX
+  </Typography>
+</Box>
       <List sx={{ width: "100%", mt: 2 }}>
         <ListItem disablePadding>
           <ListItemButton component={Link} to="/" onClick={onClose}>
