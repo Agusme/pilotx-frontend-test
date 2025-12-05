@@ -1,101 +1,139 @@
-import { useState } from "react";
-import { Box, TextField, Button, Typography } from "@mui/material";
+import {
+  Box,
+  TextField,
+  Typography,
+  Paper,
+  Snackbar,
+  Alert,
+} from "@mui/material";
 import type { CreateCommentPayload } from "../../types";
+import { useForm } from "react-hook-form";
+import { useState } from "react";
+import CustomButton from "../Common/CustomButton";
 
 interface Props {
   onSubmit: (data: CreateCommentPayload) => Promise<void>;
 }
 
 export default function CreateCommentForm({ onSubmit }: Props) {
-  const [form, setForm] = useState<CreateCommentPayload>({
-    name: "",
-    email: "",
-    body: "",
-  });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    reset,
+  } = useForm<CreateCommentPayload>();
+  const [open, setOpen] = useState(false);
 
-  const [loading, setLoading] = useState(false);
-
-  const handleChange = (prop: keyof CreateCommentPayload) => 
-    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-      setForm({ ...form, [prop]: e.target.value });
-    };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    await onSubmit(form);
-    setLoading(false);
-    setForm({ name: "", email: "", body: "" }); // limpiar
+  const submit = async (data: CreateCommentPayload) => {
+    await onSubmit(data);
+    setOpen(true);
+    reset();
   };
-
   return (
-<Box
-  component="form"
-  onSubmit={handleSubmit}
-  sx={{
-    mt: 3,
-    width: "100%",
-    display: "flex",
-    flexDirection: "column",
-    gap: 2,
-    pl: 1, // mismo padding-left que tus títulos con borde
-  }}
->
-  <Typography
-    variant="h6"
-    sx={{
-      fontWeight: 600,
-      mb: 1,
-    }}
-  >
-    Agregar comentario
-  </Typography>
+    <>
+      <Paper
+        elevation={0}
+        sx={{
+          p: 3,
+          borderRadius: 3,
+          border: "1px solid #e5e7eb",
+          backgroundColor: "#fff",
+        }}
+      >
+        <Box
+          component="form"
+          onSubmit={handleSubmit(submit)}
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 2.5,
+          }}
+        >
+          <Typography
+            variant="h6"
+            sx={{
+              fontWeight: 700,
+              color: "#1E1743",
+            }}
+          >
+            Agregar comentario
+          </Typography>
 
-  <TextField
-    label="Nombre"
-    fullWidth
-    size="small"
-    variant="outlined"
-    value={form.name}
-    onChange={handleChange("name")}
-  />
+          <TextField
+            label="Nombre"
+            size="small"
+            fullWidth
+            {...register("name", {
+              required: "El nombre es obligatorio",
+              minLength: {
+                value: 2,
+                message: "Debe tener al menos 2 caracteres",
+              },
+            })}
+            error={!!errors.name}
+            helperText={errors.name?.message}
+            sx={{ "& .MuiOutlinedInput-root": { borderRadius: 2 } }}
+          />
 
-  <TextField
-    label="Email"
-    fullWidth
-    size="small"
-    variant="outlined"
-    value={form.email}
-    onChange={handleChange("email")}
-  />
+          <TextField
+            label="Email"
+            size="small"
+            fullWidth
+            {...register("email", {
+              required: "El email es obligatorio",
+              pattern: {
+                value: /\S+@\S+\.\S+/,
+                message: "Email inválido",
+              },
+            })}
+            error={!!errors.email}
+            helperText={errors.email?.message}
+            sx={{ "& .MuiOutlinedInput-root": { borderRadius: 2 } }}
+          />
 
-  <TextField
-    label="Comentario"
-    fullWidth
-    size="small"
-    multiline
-    rows={3}
-    variant="outlined"
-    value={form.body}
-    onChange={handleChange("body")}
-  />
+          <TextField
+            label="Comentario"
+            multiline
+            rows={3}
+            size="small"
+            fullWidth
+            {...register("body", {
+              required: "El comentario es obligatorio",
+              minLength: {
+                value: 5,
+                message: "Debe tener al menos 5 caracteres",
+              },
+            })}
+            error={!!errors.body}
+            helperText={errors.body?.message}
+            sx={{ "& .MuiOutlinedInput-root": { borderRadius: 2 } }}
+          />
 
-  <Button
-    type="submit"
-    variant="contained"
-    disabled={loading}
-    sx={{
-      width: "fit-content",
-      px: 3,
-      mt: 1,
-      textTransform: "none",
-      fontWeight: 600,
-    }}
-  >
-    {loading ? "Enviando..." : "Enviar comentario"}
-  </Button>
-</Box>
-
-
+          <CustomButton type="submit" disabled={isSubmitting}>
+            {isSubmitting ? "Enviando..." : "Publicar"}
+          </CustomButton>
+        </Box>
+      </Paper>
+      <Snackbar
+        open={open}
+        onClose={() => setOpen(false)}
+        autoHideDuration={3000}
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+      >
+        <Alert
+          variant="filled"
+          onClose={() => setOpen(false)}
+          severity="success"
+          sx={{
+            bgcolor: "#1a1a4a",
+            color: "white",
+            fontWeight: "bold",
+            borderRadius: 2,
+          }}
+        >
+          Comentario enviado
+        </Alert>
+      </Snackbar>
+    </>
   );
 }

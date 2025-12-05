@@ -17,9 +17,11 @@ export default function Layout() {
       <Container
         maxWidth="md"
         sx={{
+          maxWidth: "650px", 
+          mx: "auto", 
           py: 4,
-          pt: { xs: 10, md: 4 }, 
-          ml: { xs: 0, md: "270px" },
+          pt: { xs: 10, md: 4 },
+          ml: { xs: 0, md: "240px" },
         }}
       >
         <Outlet />

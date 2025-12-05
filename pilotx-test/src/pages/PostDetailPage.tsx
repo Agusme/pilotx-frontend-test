@@ -35,6 +35,7 @@ export default function PostDetailPage() {
         post={post}
         userInitial={post.title[0].toUpperCase()}
         onClick={undefined}
+        commentCount={comments.length}
       />
       <Typography
         variant="h5"
@@ -43,7 +44,8 @@ export default function PostDetailPage() {
           mt: 4,
           mb: 2,
           pl: 1,
-          borderLeft: "4px solid black",
+          borderLeft: "4px solid #1E1743",
+          color: "#1E1743",
         }}
       >
         Comentarios

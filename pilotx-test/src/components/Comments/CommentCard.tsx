@@ -12,26 +12,32 @@ export default function CommentCard({ comment }: CommentCardProps) {
     <Card
       elevation={0}
       sx={{
-        borderRadius: 2,
-        border: "1px solid #e5e7eb",
-        p: 1,
+        borderRadius: 3,
+        border: "1px solid #e6e6e6",
+        transition: "0.2s ease",
+        mb: 2,
+        "&:hover": {
+          backgroundColor: "#fafafa",
+        },
       }}
     >
-      <CardContent sx={{ display: "flex", gap: 2 }}>
+      <CardContent sx={{ display: "flex", gap: 2, py: 2 }}>
         <Box
           sx={{
-            width: 40,
-            height: 40,
+            width: 44,
+            height: 44,
             borderRadius: "50%",
-            backgroundColor: "black",
-            color: "white",
+            backgroundColor: "#1E1743",
+            color: "#fff",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            fontWeight: "bold",
-            fontSize: "0.9rem",
+            fontSize: "1rem",
+            fontWeight: 600,
             flexShrink: 0,
-            fontFamily: "Roboto, sans-serif",
+            boxShadow: "0 2px 6px rgba(0,0,0,0.12)",
+            fontFamily: "'Roboto', sans-serif",
+            letterSpacing: "0.4px",
           }}
         >
           {userInitial}
