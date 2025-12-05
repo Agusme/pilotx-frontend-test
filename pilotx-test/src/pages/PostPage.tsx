@@ -31,7 +31,7 @@ const PostPage = () => {
     }}
   >
     <img
-      src="/pilot_x_ai_cover.jpg"   // poné la imagen en /public/
+      src="/pilot_x_ai_cover.jpg"   
       alt="PilotX Banner"
       style={{
         width: "100%",

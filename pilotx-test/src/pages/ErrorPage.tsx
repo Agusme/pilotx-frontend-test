@@ -25,7 +25,7 @@ export default function ErrorPage() {
           borderRadius: 4,
           p: isMobile ? 3 : 5,
           width: "100%",
-          maxWidth: 360,
+          maxWidth: isMobile ? 360 : 500, 
           textAlign: "center",
           boxSizing: "border-box",
         }}
