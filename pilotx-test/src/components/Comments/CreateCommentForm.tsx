@@ -23,10 +23,10 @@ export default function CreateCommentForm({ onSubmit }: Props) {
     reset,
   } = useForm<CreateCommentPayload>();
   const [open, setOpen] = useState(false);
-  
+
   const submit = async (data: CreateCommentPayload) => {
     await onSubmit(data);
-    setOpen(true)
+    setOpen(true);
     reset();
   };
   return (
@@ -129,26 +129,26 @@ export default function CreateCommentForm({ onSubmit }: Props) {
           </Button>
         </Box>
       </Paper>
-<Snackbar
-  open={open}
-  onClose={() => setOpen(false)}
-  autoHideDuration={3000}
-  anchorOrigin={{ vertical: "top", horizontal: "right" }}
->
-  <Alert
-    variant="filled"
-    onClose={() => setOpen(false)}
-    severity="success"
-    sx={{
-      bgcolor: "#1a1a4a", // tu azul
-      color: "white",
-      fontWeight: "bold",
-      borderRadius: 2,
-    }}
-  >
-    Comentario enviado
-  </Alert>
-</Snackbar>
+      <Snackbar
+        open={open}
+        onClose={() => setOpen(false)}
+        autoHideDuration={3000}
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+      >
+        <Alert
+          variant="filled"
+          onClose={() => setOpen(false)}
+          severity="success"
+          sx={{
+            bgcolor: "#1a1a4a",
+            color: "white",
+            fontWeight: "bold",
+            borderRadius: 2,
+          }}
+        >
+          Comentario enviado
+        </Alert>
+      </Snackbar>
     </>
   );
 }
