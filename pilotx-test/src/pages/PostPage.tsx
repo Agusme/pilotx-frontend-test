@@ -1,7 +1,7 @@
 import { Box, CircularProgress } from "@mui/material";
 import PostCard from "../components/Posts/PostCard";
 import { usePosts } from "../hooks/usePosts";
-
+import bannerPilotx from '../assets/pilot_x_ai_cover.jpg'
 const PostPage = () => {
   const { posts, loading, error } = usePosts();
 
@@ -31,7 +31,7 @@ const PostPage = () => {
     }}
   >
     <img
-      src="/pilot_x_ai_cover.jpg"   
+      src={bannerPilotx}   
       alt="PilotX Banner"
       style={{
         width: "100%",
