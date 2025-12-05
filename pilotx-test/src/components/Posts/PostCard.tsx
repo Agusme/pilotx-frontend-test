@@ -42,6 +42,7 @@ export default function PostCard({
           },
         }}
       >
+        
         <CardContent sx={{ display: "flex", gap: 2 }}>
           <Box sx={{ display: "flex", gap: 2,  }}>
             <Avatar
