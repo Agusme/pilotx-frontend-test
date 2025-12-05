@@ -105,7 +105,6 @@ export default function Sidebar({ mobileOpen, onClose }: Props) {
 
   return (
     <>
-      {/* Desktop */}
       <Box
         sx={{
           width: 220,
@@ -119,7 +118,6 @@ export default function Sidebar({ mobileOpen, onClose }: Props) {
         {sidebarContent}
       </Box>
 
-      {/* Mobile */}
       <Drawer
         open={mobileOpen}
         onClose={onClose}

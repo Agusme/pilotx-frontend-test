@@ -1,7 +1,6 @@
 import {
   Box,
   TextField,
-  Button,
   Typography,
   Paper,
   Snackbar,
@@ -10,6 +9,7 @@ import {
 import type { CreateCommentPayload } from "../../types";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import CustomButton from "../Common/CustomButton";
 
 interface Props {
   onSubmit: (data: CreateCommentPayload) => Promise<void>;
@@ -109,24 +109,9 @@ export default function CreateCommentForm({ onSubmit }: Props) {
             sx={{ "& .MuiOutlinedInput-root": { borderRadius: 2 } }}
           />
 
-          <Button
-            type="submit"
-            variant="contained"
-            disabled={isSubmitting}
-            sx={{
-              width: "fit-content",
-              px: 3,
-              py: 1,
-              mt: 1,
-              borderRadius: 2,
-              textTransform: "none",
-              fontWeight: 700,
-              backgroundColor: "#1E1743",
-              ":hover": { backgroundColor: "#140f30" },
-            }}
-          >
+          <CustomButton type="submit" disabled={isSubmitting}>
             {isSubmitting ? "Enviando..." : "Publicar"}
-          </Button>
+          </CustomButton>
         </Box>
       </Paper>
       <Snackbar

@@ -42,17 +42,15 @@ export default function PostCard({
           },
         }}
       >
-   
         <CardContent sx={{ display: "flex", gap: 2 }}>
-          <Box sx={{ display: "flex", gap: 2,  }}>
+          <Box sx={{ display: "flex", gap: 2 }}>
             <Avatar
               sx={{
                 width: 48,
                 height: 48,
                 bgcolor: "#1a1a4a",
                 fontWeight: "bold",
-                               fontFamily: "'Roboto', sans-serif",   
-
+                fontFamily: "'Roboto', sans-serif",
               }}
             >
               {userInitial}
@@ -65,11 +63,9 @@ export default function PostCard({
             >
               {post.title}
             </Typography>
-            <Typography
-            sx={{ color: "#555", mb: 2, lineHeight: 1.4 }}
-          >
-            {post.body}
-          </Typography>
+            <Typography sx={{ color: "#555", mb: 2, lineHeight: 1.4 }}>
+              {post.body}
+            </Typography>
           </Box>
         </CardContent>{" "}
         <Box

@@ -10,7 +10,7 @@ export default function CommentCard({ comment }: CommentCardProps) {
 
   return (
     <Card
-     elevation={0}
+      elevation={0}
       sx={{
         borderRadius: 3,
         border: "1px solid #e6e6e6",
@@ -36,9 +36,8 @@ export default function CommentCard({ comment }: CommentCardProps) {
             fontWeight: 600,
             flexShrink: 0,
             boxShadow: "0 2px 6px rgba(0,0,0,0.12)",
-               fontFamily: "'Roboto', sans-serif",   
-    letterSpacing: "0.4px",          
-    
+            fontFamily: "'Roboto', sans-serif",
+            letterSpacing: "0.4px",
           }}
         >
           {userInitial}
