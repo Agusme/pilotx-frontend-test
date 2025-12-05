@@ -3,7 +3,7 @@ export interface Post {
   id: number;
   title: string;
   body: string;
-  commentCount?: number
+  commentCount?: number;
 }
 
 export interface Comment {

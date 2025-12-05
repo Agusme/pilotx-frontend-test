@@ -24,21 +24,19 @@ const PostPage = () => {
       <Box
         sx={{
           width: "100%",
-          height: 120,
+          height: { xs: 70, sm: 120 },
           borderRadius: 2,
           overflow: "hidden",
           mb: 2,
-        }}
-      >
-        <img
-          src={bannerPilotx}
-          alt="PilotX Banner"
-          style={{
+          "& img": {
             width: "100%",
             height: "100%",
             objectFit: "cover",
-          }}
-        />
+            objectPosition: { xs: "top", sm: "center" },
+          },
+        }}
+      >
+        <img src={bannerPilotx} alt="PilotX Banner" />
       </Box>
       {posts.map((post) => (
         <PostCard

@@ -11,7 +11,7 @@ export default function AppRouter() {
         <Route element={<Layout />}>
           <Route path="/" element={<PostPage />} />
           <Route path="/posts/:id" element={<PostDetailPage />} />
-<Route path="*" element={<ErrorPage />} />
+          <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
