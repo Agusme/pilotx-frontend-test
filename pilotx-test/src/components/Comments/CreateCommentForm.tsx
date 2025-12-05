@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Box, TextField, Button, Typography } from "@mui/material";
+import { Box, TextField, Button, Typography, Paper } from "@mui/material";
 import type { CreateCommentPayload } from "../../types";
 
 interface Props {
@@ -29,72 +29,98 @@ export default function CreateCommentForm({ onSubmit }: Props) {
   };
 
   return (
-<Box
-  component="form"
-  onSubmit={handleSubmit}
-  sx={{
-    mt: 3,
-    width: "100%",
-    display: "flex",
-    flexDirection: "column",
-    gap: 2,
-    pl: 1, // mismo padding-left que tus títulos con borde
-  }}
->
-  <Typography
-    variant="h6"
-    sx={{
-      fontWeight: 600,
-      mb: 1,
-    }}
-  >
-    Agregar comentario
-  </Typography>
+<Paper
+      elevation={0}
+      sx={{
+        p: 3,
+        borderRadius: 3,
+        border: "1px solid #e5e7eb",
+        backgroundColor: "#fff",
+      }}
+    >
+      <Box
+        component="form"
+        onSubmit={handleSubmit}
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          gap: 2.5,
+        }}
+      >
+        <Typography
+          variant="h6"
+          sx={{
+            fontWeight: 700,
+            color: "#1E1743",
+          }}
+        >
+          Agregar comentario
+        </Typography>
 
-  <TextField
-    label="Nombre"
-    fullWidth
-    size="small"
-    variant="outlined"
-    value={form.name}
-    onChange={handleChange("name")}
-  />
+        <TextField
+          label="Nombre"
+          fullWidth
+          size="small"
+          value={form.name}
+          onChange={handleChange("name")}
+          sx={{
+            "& .MuiOutlinedInput-root": {
+              borderRadius: 2,
+            },
+          }}
+        />
 
-  <TextField
-    label="Email"
-    fullWidth
-    size="small"
-    variant="outlined"
-    value={form.email}
-    onChange={handleChange("email")}
-  />
+        <TextField
+          label="Email"
+          fullWidth
+          size="small"
+          value={form.email}
+          onChange={handleChange("email")}
+          sx={{
+            "& .MuiOutlinedInput-root": {
+              borderRadius: 2,
+            },
+          }}
+        />
 
-  <TextField
-    label="Comentario"
-    fullWidth
-    size="small"
-    multiline
-    rows={3}
-    variant="outlined"
-    value={form.body}
-    onChange={handleChange("body")}
-  />
+        <TextField
+          label="Comentario"
+          fullWidth
+          multiline
+          rows={3}
+          size="small"
+          value={form.body}
+          onChange={handleChange("body")}
+          sx={{
+            "& .MuiOutlinedInput-root": {
+              borderRadius: 2,
+            },
+          }}
+        />
 
-  <Button
-    type="submit"
-    variant="contained"
-    disabled={loading}
-    sx={{
-      width: "fit-content",
-      px: 3,
-      mt: 1,
-      textTransform: "none",
-      fontWeight: 600,
-    }}
-  >
-    {loading ? "Enviando..." : "Enviar comentario"}
-  </Button>
-</Box>
+        <Button
+          type="submit"
+          variant="contained"
+          disabled={loading}
+          sx={{
+            width: "fit-content",
+            px: 3,
+            py: 1,
+            mt: 1,
+            borderRadius: 2,
+            textTransform: "none",
+            fontWeight: 700,
+            backgroundColor: "#1E1743",
+            ":hover": {
+              backgroundColor: "#140f30",
+            },
+            transition: "0.2s ease",
+          }}
+        >
+          {loading ? "Enviando..." : "Publicar"}
+        </Button>
+      </Box>
+    </Paper>
 
 
   );

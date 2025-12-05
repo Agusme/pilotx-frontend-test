@@ -16,11 +16,13 @@ export default function Layout() {
       <Sidebar mobileOpen={mobileOpen} onClose={closeMenu} />
       <Container
         maxWidth="md"
-        sx={{
-          py: 4,
-          pt: { xs: 10, md: 4 }, 
-          ml: { xs: 0, md: "270px" },
-        }}
+      sx={{
+  maxWidth: "650px",   // ancho típico de Twitter
+  mx: "auto",          // centra todo
+  py: 4,
+  pt: { xs: 10, md: 4 },
+  ml: { xs: 0, md: "240px" },
+}}
       >
         <Outlet />
       </Container>
